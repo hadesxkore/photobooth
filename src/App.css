@@ -1,0 +1,20 @@
+/* index.css or app.css */
+#root {
+  height: 100vh; /* Make sure the root element takes the full height */
+  width: 100%; /* Allow it to take up the full width */
+  margin: 0;
+  padding: 0; /* Remove any unnecessary padding */
+  text-align: center;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
