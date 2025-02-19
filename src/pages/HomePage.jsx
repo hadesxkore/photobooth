@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiCamera, HiPhotograph, HiHeart, HiLightningBolt } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import samplept1 from "../assets/images/samplept1.jpg";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ const HomePage = () => {
   }}
 >
   <img
-    src="/public/images/samplept1.jpg"
+   src={samplept1}
     alt="Photo Booth"
     className="rounded-2xl shadow-2xl"
   />

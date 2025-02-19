@@ -3,20 +3,20 @@ import Navbar from "../components/navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
+// Import images directly
+import img1 from "../assets/images/13.jpg";
+import img2 from "../assets/images/z19.jpg";
+import img3 from "../assets/images/1.jpg";
+import img4 from "../assets/images/z8.jpg";
+import img5 from "../assets/images/z24.jpg";
+import img6 from "../assets/images/z9.jpg";
+import img8 from "../assets/images/2.jpg";
+import img9 from "../assets/images/4.jpg";
+import img10 from "../assets/images/9.jpg";
+
 const AboutUs = () => {
-  // List of image filenames
-  const images = [
-    "/public/images/13.jpg",
-    "/public/images/z19.jpg",
-    "/public/images/1.jpg",
-    "/public/images/z8.jpg",
-    "/public/images/z24.jpg",
-    "/public/images/z9.jpg",
-    "/public/images/z17.jpg",
-    "/public/images/2.jpg",
-    "/public/images/4.jpg",
-    "/public/images/9.jpg",
-  ];
+  // Use imported images in an array
+  const images = [img1, img2, img3, img4, img5, img6, img8, img9, img10];
 
   // State to track the current image index
   const [currentIndex, setCurrentIndex] = useState(0);
