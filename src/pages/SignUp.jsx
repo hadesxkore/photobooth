@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import bg1 from "../assets/images/bg1.jpg";
+
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -100,7 +102,7 @@ const SignUp = () => {
       }
 
       toast.success("Successfully logged in!");
-      navigate("/home");
+      navigate("/HomePage");
     } catch (err) {
       toast.error("Login failed! Please check your credentials.");
     }
@@ -115,8 +117,8 @@ const SignUp = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="min-h-screen flex items-center justify-center bg-cover bg-center p-6"
-        style={{ backgroundImage: "url('/src/images/bg1.jpg')" }}
-      >
+        style={{ backgroundImage: `url(${bg1})` }} // Use the imported image variable
+        >
         <div className="w-full max-w-lg bg-white bg-opacity-90 backdrop-blur-md p-8 rounded-xl shadow-xl">
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Create Account</h2>
 

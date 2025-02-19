@@ -14,6 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getFirestore, doc, getDoc } from "firebase/firestore"; // Import Firestore methods
+import bg1 from "../assets/images/bg1.jpg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -68,7 +69,7 @@ const Login = () => {
 
       if (userDoc.exists()) {
         toast.success("Successfully logged in with Google!");
-        navigate("/"); // Redirect after successful login
+        navigate("/HomePage"); // Redirect after successful login
       } else {
         toast.error("No account associated with this Google email.");
       }
@@ -87,7 +88,7 @@ const Login = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="min-h-screen flex items-center justify-center bg-cover bg-center p-6"
-        style={{ backgroundImage: "url('/src/images/bg1.jpg')" }}
+        style={{ backgroundImage: `url(${bg1})` }} // Use the imported image variable
       >
         <div className="w-full max-w-lg bg-white bg-opacity-90 backdrop-blur-md p-8 rounded-xl shadow-xl">
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Log In</h2>
@@ -154,7 +155,7 @@ const Login = () => {
 
           <p className="mt-6 text-center text-gray-600">
             Don't have an account?{" "}
-            <Link to="/signup" className="text-indigo-600 hover:underline">
+            <Link to="/" className="text-indigo-600 hover:underline">
               Sign Up
             </Link>
           </p>

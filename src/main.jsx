@@ -15,8 +15,8 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} /> {/* This makes HomePage the default */}
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/HomePage" element={<HomePage />} /> {/* This makes HomePage the default */}
+        <Route path="/" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Capture" element={<Capture />} />
         <Route path="/about-us" element={<AboutUs />} />
