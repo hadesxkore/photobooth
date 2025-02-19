@@ -6,16 +6,16 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 const AboutUs = () => {
   // List of image filenames
   const images = [
-    "/src/images/13.jpg",
-    "/src/images/z19.jpg",
-    "/src/images/1.jpg",
-    "/src/images/z8.jpg",
-    "/src/images/z24.jpg",
-    "/src/images/z9.jpg",
-    "/src/images/z17.jpg",
-    "/src/images/2.jpg",
-    "/src/images/4.jpg",
-    "/src/images/9.jpg",
+    "/public/images/13.jpg",
+    "/public/images/z19.jpg",
+    "/public/images/1.jpg",
+    "/public/images/z8.jpg",
+    "/public/images/z24.jpg",
+    "/public/images/z9.jpg",
+    "/public/images/z17.jpg",
+    "/public/images/2.jpg",
+    "/public/images/4.jpg",
+    "/public/images/9.jpg",
   ];
 
   // State to track the current image index

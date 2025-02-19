@@ -81,7 +81,7 @@ const HomePage = () => {
   }}
 >
   <img
-    src="/src/images/samplept1.jpg"
+    src="/public/images/samplept1.jpg"
     alt="Photo Booth"
     className="rounded-2xl shadow-2xl"
   />
