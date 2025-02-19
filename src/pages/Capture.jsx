@@ -11,6 +11,8 @@ const CapturePage = () => {
   const [cameraPermission, setCameraPermission] = useState(false);
   const [frameColor, setFrameColor] = useState("#ffffff"); // Default white frame
   const [facingMode, setFacingMode] = useState("user"); // Camera mode: 'user' or 'environment'
+  const [isMirrored, setIsMirrored] = useState(true); // New state for mirror effect
+
   const videoRef = useRef(null);
   const streamRef = useRef(null);
 
@@ -44,7 +46,10 @@ const CapturePage = () => {
   const flipCamera = async () => {
     setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
   };
-
+  // New function to toggle mirror effect
+  const toggleMirror = () => {
+    setIsMirrored(prev => !prev);
+  };
   useEffect(() => {
     if (step === "capturing") startCamera();
     return () => {
@@ -53,6 +58,7 @@ const CapturePage = () => {
       }
     };
   }, [step, facingMode]);
+
 
   const capturePhoto = () => {
     if (capturedPhotos.length >= frameStyle.photos) return;
@@ -66,7 +72,15 @@ const CapturePage = () => {
         const canvas = document.createElement("canvas");
         canvas.width = videoRef.current.videoWidth;
         canvas.height = videoRef.current.videoHeight;
-        canvas.getContext("2d").drawImage(videoRef.current, 0, 0);
+        const ctx = canvas.getContext("2d");
+        
+        // Handle mirroring when capturing
+        if (isMirrored && facingMode === "user") {
+          ctx.translate(canvas.width, 0);
+          ctx.scale(-1, 1);
+        }
+        
+        ctx.drawImage(videoRef.current, 0, 0);
         const photo = canvas.toDataURL("image/jpeg");
         setCapturedPhotos((prev) => [...prev, photo]);
         setCountdown(null);
@@ -188,13 +202,15 @@ const CapturePage = () => {
               exit={{ opacity: 0, y: -20 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-8"
             >
-              {/* Camera Preview Section */}
+              {/* Camera Preview Section with fixed mirroring */}
               <div className="relative">
                 <video
                   ref={videoRef}
                   autoPlay
                   playsInline
-                  className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
+                  className={`w-full h-[400px] object-cover rounded-2xl shadow-lg ${
+                    isMirrored && facingMode === "user" ? "scale-x-[-1]" : ""
+                  }`}
                 />
                 {countdown !== null && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl">
@@ -215,15 +231,19 @@ const CapturePage = () => {
                       Capture {capturedPhotos.length + 1}/{frameStyle.photos}
                     </motion.button>
 
-                    {/* Flip Camera Button */}
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={flipCamera}
-                      className="absolute top-4 right-4 bg-gray-200 text-gray-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition-colors"
-                    >
-                      Flip Camera
-                    </motion.button>
+                    <div className="absolute top-4 right-4 flex gap-2">
+                 
+
+                      {/* Flip Camera Button */}
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={flipCamera}
+                        className="bg-gray-200 text-gray-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition-colors"
+                      >
+                        Flip Camera
+                      </motion.button>
+                    </div>
                   </>
                 )}
               </div>
